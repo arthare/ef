@@ -1,0 +1,47 @@
+{{#modal-dialog title="New Class" isOpen=isOpen}}
+  <div class="modal-new-class__row">
+    {{#vertical-centered-text class="modal-new-class__input"}}
+      {{input value=newClass.name placeholder="Basket weaving"}} 
+    {{/vertical-centered-text}}
+    {{#vertical-centered-text class="modal-new-class__text"}}
+      <div>Class Name</div>
+    {{/vertical-centered-text}}
+  </div>
+  <div class="modal-new-class__row">
+    {{#vertical-centered-text class="modal-new-class__input"}}
+      {{item-picker list=dbService.locations humanType="Location" type="location" onPick=(action 'onPickLocation')}} 
+    {{/vertical-centered-text}}
+    {{#vertical-centered-text class="modal-new-class__text"}}
+      <div>Class Location</div>
+    {{/vertical-centered-text}}
+  </div>
+  <div class="modal-new-class__row">
+    {{#vertical-centered-text class="modal-new-class__input"}}
+      {{item-picker list=dbService.instructors humanType="Instructor" type="instructor" onPick=(action 'onPickInstructor')}}
+    {{/vertical-centered-text}}
+    {{#vertical-centered-text class="modal-new-class__text"}}
+      <div>Class Instructor</div>
+    {{/vertical-centered-text}}
+  </div>
+  <div class="modal-new-class__row">
+    {{#vertical-centered-text class="modal-new-class__input"}}
+      {{image-picker onPick=(action 'onPickedImage')}}
+    {{/vertical-centered-text}}
+    {{#vertical-centered-text class="modal-new-class__text"}}
+      <div>Image</div>
+    {{/vertical-centered-text}}
+  </div>
+  <div class="modal-new-class__row">
+    {{#vertical-centered-text class="modal-new-class__input small"}}
+      {{input value=newClass.uniquetext placeholder="In this class, you'll learn all about something awesome, guided by our equally-amazing instructor."}} 
+    {{/vertical-centered-text}}
+    {{#vertical-centered-text class="modal-new-class__text"}}
+      <div>Long Description</div>
+    {{/vertical-centered-text}}
+  </div>
+  <div class="modal-new-class__row">
+    {{#round-button onPress=(action 'submitNewClass') class="modal-new-class__submit"}}
+      Submit New Class
+    {{/round-button}}
+  </div>
+{{/modal-dialog}}

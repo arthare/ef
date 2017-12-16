@@ -1,0 +1,7 @@
+<div class="modal-dialog__topbar">
+  {{#round-button onPress=(action 'cancelDialog')}}X{{/round-button}}
+  {{#vertical-centered-text class="modal-dialog__vct"}}
+    {{title}}
+  {{/vertical-centered-text}}
+</div>
+{{yield}}

@@ -1,0 +1,15 @@
+{{#round-button onPress=(action 'openPicker')}}
+  {{#if pickedItem}}
+    {{pickedItem.name}}
+  {{else}}
+    Select
+  {{/if}}
+{{/round-button}}
+
+{{#modal-dialog isOpen=isPicking title="Select"}}
+  {{#if isPicking}}
+    {{#each list as |listItem|}}
+      {{pickable-item type=type item=listItem onPick=(action 'onPick')}}
+    {{/each}}
+  {{/if}}
+{{/modal-dialog}}

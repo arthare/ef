@@ -1,0 +1,9 @@
+Happening Today:
+{{#each model.todayClasses as |instance|}}
+  {{schedule-class-instance instance=instance}}
+{{/each}}
+<hr class="whatsup__hr" />
+Happening Later:
+{{#each model.laterClasses as |instance|}}
+  {{schedule-class-instance instance=instance}}
+{{/each}}

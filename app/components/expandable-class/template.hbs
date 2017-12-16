@@ -1,0 +1,31 @@
+<div class="expandable__head">
+  <div class="expandable__image">
+  </div>
+  <div class="expandable__text">
+    <h4>{{class.name}} <span class="expandable__plus" {{action 'expandClass'}}>[+]</span></h4>
+    <div class="expandable__actions">
+      {{#round-button onPress=(action 'newLesson') class="small"}}
+        New Lesson
+      {{/round-button}}
+      {{#round-button onPress=(action 'expandClass') class="small"}}
+        {{#if isExpanded}}
+          Hide Lessons
+        {{else}}
+          Show Lessons
+        {{/if}}
+      {{/round-button}}
+    </div>
+  </div>
+</div>
+<div class="expandable__instances">
+  {{#if isExpanded}}
+    {{#if hasData}}
+      <h4 class="expandable__upcoming--title">Lessons</h4>
+      {{#each instances as |instance|}}
+        {{instructor-class-instance instance=instance}}
+      {{/each}}
+    {{else}}
+      Loading...
+    {{/if}}
+  {{/if}}
+</div>

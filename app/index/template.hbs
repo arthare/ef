@@ -1,0 +1,13 @@
+<div class="index__container">
+  <p class="index__title">Welcome to EFitness!</p>
+
+  <div class="index__buttonlist">
+    {{#round-button onPress=(action 'signUp')}}Sign Up{{/round-button}}
+    {{#round-button onPress=(action 'whatsUp')}}What's Happening?{{/round-button}}
+  </div>
+
+  <div class="index__filler"></div>
+
+  <p class="index__justapreview">Explore...</p>
+  {{event-cycler classes=model.classes}}
+</div>

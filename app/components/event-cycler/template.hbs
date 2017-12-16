@@ -1,0 +1,14 @@
+<div class="cycler__location cycler__fading cycler__image {{if running 'running'}}">
+  {{currentClass.location.name}}
+</div>
+<div class="cycler__instructor cycler__fading cycler__image {{if running 'running'}}">
+  {{currentClass.instructor.name}}
+</div>
+<div class="cycler__class cycler__fading cycler__image {{if running 'running'}}">
+  {{currentClass.name}}
+</div>
+<div class="cycler__text cycler__fading {{if running 'running'}}">
+  {{#if currentClass}}
+    {{currentClass.name}} with {{currentClass.instructor.name}} at {{currentClass.location.name}}
+  {{/if}}
+</div>

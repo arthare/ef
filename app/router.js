@@ -7,6 +7,8 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('instructor', { path: '/instructor/:id' });
+  this.route('whatsup');
 });
 
 export default Router;
