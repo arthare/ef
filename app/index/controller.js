@@ -12,5 +12,8 @@ export default Ember.Controller.extend({
     whatsUp() {
       this.transitionToRoute('whatsup');
     },
+    pastClasses() {
+      this.transitionToRoute('pastclasses');
+    },
   }
 });

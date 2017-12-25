@@ -1,44 +1,22 @@
 {{#modal-dialog title="New Class" isOpen=isOpen}}
-  <div class="modal-new-class__row">
-    {{#vertical-centered-text class="modal-new-class__input"}}
+  {{#modal-row label="Class Name"}}
       {{input value=newClass.name placeholder="Basket weaving"}} 
-    {{/vertical-centered-text}}
-    {{#vertical-centered-text class="modal-new-class__text"}}
-      <div>Class Name</div>
-    {{/vertical-centered-text}}
-  </div>
-  <div class="modal-new-class__row">
-    {{#vertical-centered-text class="modal-new-class__input"}}
+  {{/modal-row}}
+  {{#modal-row label="Location"}}
       {{item-picker list=dbService.locations humanType="Location" type="location" onPick=(action 'onPickLocation')}} 
-    {{/vertical-centered-text}}
-    {{#vertical-centered-text class="modal-new-class__text"}}
-      <div>Class Location</div>
-    {{/vertical-centered-text}}
-  </div>
-  <div class="modal-new-class__row">
-    {{#vertical-centered-text class="modal-new-class__input"}}
+  {{/modal-row}}
+  {{#modal-row label="Instructor"}}
       {{item-picker list=dbService.instructors humanType="Instructor" type="instructor" onPick=(action 'onPickInstructor')}}
-    {{/vertical-centered-text}}
-    {{#vertical-centered-text class="modal-new-class__text"}}
-      <div>Class Instructor</div>
-    {{/vertical-centered-text}}
-  </div>
-  <div class="modal-new-class__row">
-    {{#vertical-centered-text class="modal-new-class__input"}}
+  {{/modal-row}}
+  {{#modal-row label="Image"}}
       {{image-picker onPick=(action 'onPickedImage')}}
-    {{/vertical-centered-text}}
-    {{#vertical-centered-text class="modal-new-class__text"}}
-      <div>Image</div>
-    {{/vertical-centered-text}}
-  </div>
-  <div class="modal-new-class__row">
-    {{#vertical-centered-text class="modal-new-class__input small"}}
+  {{/modal-row}}
+  {{#modal-row label="Class Description"}}
       {{input value=newClass.uniquetext placeholder="In this class, you'll learn all about something awesome, guided by our equally-amazing instructor."}} 
-    {{/vertical-centered-text}}
-    {{#vertical-centered-text class="modal-new-class__text"}}
-      <div>Long Description</div>
-    {{/vertical-centered-text}}
-  </div>
+  {{/modal-row}}
+  {{#modal-row label="Price In Dollars"}}
+      {{input value=newClass.defaultpricecents placeholder="5.00"}} 
+  {{/modal-row}}
   <div class="modal-new-class__row">
     {{#round-button onPress=(action 'submitNewClass') class="modal-new-class__submit"}}
       Submit New Class

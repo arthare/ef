@@ -16,7 +16,8 @@ App = Ember.Application.extend({
 });
 
 window.efitness = {};
-window.efitness.baseUrl = 'http://localhost:3000';
+window.efitness.baseUrl = 'http://45.33.76.113:3000';
+//window.efitness.baseUrl = 'http://localhost:3000';
 
 Ember.assert2 = function(f) {
   if(!f) {

@@ -1,0 +1,5 @@
+<div class="rating-control__rate--container {{if unrated 'unrated'}} {{unless canRate 'cantrate'}}">
+  {{#each ratings as |rating|}}
+    <div class="rating-control__rate" {{action 'rate' rating}} ></div>
+  {{/each}}
+</div>

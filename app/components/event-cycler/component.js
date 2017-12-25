@@ -13,24 +13,31 @@ export default Ember.Component.extend({
     this.cycleIn();
   },
 
+  goodClasses: Ember.computed('classes', function() {
+    return _.filter(this.get('classes'), (cls) => {
+      return _.isNumber(cls.nexttime);
+    });
+  }),
+
   getNextClass() {
     let ix = this.get('index');
-    const classes = this.get('classes');
+    const classes = this.get('goodClasses');
     const ret = classes[ix];
 
     ix++;
     if(ix >= classes.length) {
       ix = 0;
     }
+    this.set('index', ix);
 
     return ret;
   },
 
   cycleIn() {
     const theClass = this.getNextClass();
-    var locationImg = loadImgPromise('http://localhost:3000/image/location/' + theClass.location.id);
-    var instructorImg = loadImgPromise('http://localhost:3000/image/instructor/' + theClass.instructor.id);
-    var classImg = loadImgPromise('http://localhost:3000/image/class/' + theClass.id);
+    var locationImg = loadImgPromise(window.efitness.baseUrl + '/image/location/' + theClass.location.id);
+    var instructorImg = loadImgPromise(window.efitness.baseUrl + '/image/instructor/' + theClass.instructor.id);
+    var classImg = loadImgPromise(window.efitness.baseUrl + '/image/class/' + theClass.id);
     console.log("cycling in!");
     Ember.RSVP.all([locationImg, instructorImg, classImg]).then((allLoaded) => {
       // everything is loaded!  let's cycle out the old images, then put these in.

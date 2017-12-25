@@ -8,6 +8,11 @@ export default Ember.Component.extend({
     Ember.assert2(_.isArray(this.get('list')));
     Ember.assert2(_.isString(this.get('humanType')));
     Ember.assert2(_.isFunction(this.attrs.onPick));
+
+    const initial = this.get('initialPick');
+    if(initial) {
+      this.set('pickedItem', initial);
+    }
   },
 
   actions: {

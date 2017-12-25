@@ -1,0 +1,9 @@
+
+
+{{#each classes as |instance|}}
+  {{schedule-class-instance instance=instance.instance onChangeRating=(action 'onRateClass')}}
+{{else}}
+  <p>
+    You haven't attended any classes in the past.  Check back later!
+  </p>
+{{/each}}

@@ -1,9 +1,9 @@
 Happening Today:
 {{#each model.todayClasses as |instance|}}
-  {{schedule-class-instance instance=instance}}
+  {{schedule-class-instance instance=instance onChangeAttendance=(action 'onChangeAttendance')}}
 {{/each}}
 <hr class="whatsup__hr" />
 Happening Later:
 {{#each model.laterClasses as |instance|}}
-  {{schedule-class-instance instance=instance}}
+  {{schedule-class-instance instance=instance onChangeAttendance=(action 'onChangeAttendance')}}
 {{/each}}

@@ -1,0 +1,19 @@
+{{#modal-dialog title="New Location" isOpen=isOpen}}
+  {{#modal-row label="Location Name"}}
+      {{input value=newLocation.name placeholder="WorkoutCorp"}} 
+  {{/modal-row}}
+  {{#modal-row label="Image"}}
+      {{image-picker onPick=(action 'onPickedImage')}}
+  {{/modal-row}}
+  {{#modal-row label="Location Description"}}
+      {{input value=newLocation.description placeholder="Our glass temple to fitness.  No throwing stones please!"}} 
+  {{/modal-row}}
+  {{#modal-row label="Geographical Location"}}
+      {{g-maps class="location-picker" name="my-map" lat=currentLat lng=currentLon zoom=zoom}}
+  {{/modal-row}}
+  <div class="modal-new-class__row">
+    {{#round-button onPress=(action 'submitNewLocation') class="modal-new-class__submit"}}
+      Submit New Location
+    {{/round-button}}
+  </div>
+{{/modal-dialog}}

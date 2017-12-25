@@ -12,6 +12,7 @@ export default Ember.Component.extend({
     locationid: -1,
     uniquetext: '',
     image: null,
+    defaultprice: "5.00",
   },
 
   didInsertElement() {

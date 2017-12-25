@@ -8,6 +8,10 @@ export default Ember.Service.extend({
   locations: [],
 
   initInstance: function() {
+    return this.refreshLists();
+  },
+
+  refreshLists() {
     const instructors = apiCall('instructors', {}).then((instructors) => {
       this.set('instructors', instructors);
     });

@@ -62,11 +62,17 @@ body {
 .image-picker {
   &__filebutton {
     position: absolute;
-    left: 1000px;
+    left: -1000px;
   }
   &__picked {
     @include background-cover();
 
+  }
+}
+
+.modal-new-lesson {
+  &__preview-image {
+    max-height: 100px;
   }
 }
 
@@ -106,7 +112,9 @@ body {
     width: 100%;
   }
 }
-
+.location-picker {
+  height: 200px !important;
+}
 .modal-dialog {
   &__container {
     background-color: $second-superlight;
@@ -130,7 +138,7 @@ body {
     display: flex;
     flex-direction: row;
     background-color: $second-light;
-    font-size: 4vh;
+    font-size: 28px;
   }
   &__vct {
     flex: auto 1 1;
@@ -165,21 +173,104 @@ body {
   }
 }
 
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.whoareyou {
+  &__username {
+    background-color: $primary-light;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 4px;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+.rating-control {
+  &__container {
+  }
+  &__rate {
+    flex: auto 1 1;
+    height: 20vw;
+
+    &--container {
+      display: flex;
+      flex-direction: row;
+
+      background-image: url('stars.svg');
+      background-size: cover;
+      background-position-y: 26%;
+
+      transition: background-position-y 0.20s, opacity 0.2s;
+      &.unrated {
+        opacity: 0.2;
+      }
+    }
+  }
+}
+
+.application {
+  &__navbar {
+    display: flex;
+    flex-direction: row;
+    color: rgba(255,255,255,0.5);
+    background-color: $primary-superlight;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  &__username {
+    flex: auto 1 1;
+    font-size: small;
+  }
+  &__money {
+    flex: auto 1 1;
+    text-align: right;
+    font-size: small;
+  }
+}
+
 .round-button {
   &__container {
-    margin: 1vh;
-    height: 4vh;
+    margin: 7px;
+    height: 28px;
     background-color: $primary-superlight;
-    border-radius: 4vh;
-    padding: 2vh;
+    border-radius: 28px;
+    padding: 14px;
     display: inline-block;
+
+    transition: background-color 0.25s;
+
+    &.spreadbutton {
+      flex: auto 1 1;
+    }
 
     &.small {
       font-size: 0.5em;
-      padding: 1vh;
-      border-radius: 2vh;
-      height: 2vh;
-      margin: 0.5vh;
+      padding: 7px;
+      border-radius: 14px;
+      height: 14px;
+      margin: 3.5px;
+    }
+    &.working {
+      animation: pulse 0.5s;
+      animation-iteration-count: infinite;
+    }
+    &.green {
+      background-color: green;
+      color: black;
     }
   }
 }
@@ -187,12 +278,22 @@ body {
 .instructor {
   &__actions {
     position: fixed;
-    height: 10vh;
+    height: 70px;
     bottom: 0;
     width: 100vw;
     left: 0;
     background-color: rgba(255,255,255,0.3);
     text-align: right;
+  }
+  &__actionplug {
+    height: 70px;
+    display: block;
+  }
+  &__title {
+    text-align: center;
+  }
+  &__intro {
+    text-align: center;
   }
   
 }
@@ -230,6 +331,7 @@ body {
   &__title {
     font-size: 2em;
     text-transform: uppercase;
+    text-align: center;
   }
   &__filler {
     flex: auto 1 1;
@@ -271,7 +373,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 
-    text-shadow: 0 0 3px black;
+    text-shadow: 0 0 4px black;
     padding: 4px;
     text-align: center;
     border: 1px solid rgba(255,255,255,0.5);
@@ -317,6 +419,7 @@ body {
     height: 50%;
 
     padding: 8px;
+    box-sizing: border-box;
   }
 }
 
@@ -326,9 +429,13 @@ body {
     background-color: $primary-superlight;
     border-radius: 5px;
     width: 100%;
-
+  }
+  &__top {
     display: flex;
     flex-direction: row;
+  }
+  &__bottom {
+    background-color: $primary-light;
   }
   &__right {
     display: flex;

@@ -23,6 +23,10 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.googleMap = {
+    apiKey: 'AIzaSyB8t17t4yUwIoXPbn61kfoXOB5OHos_aho',
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -43,7 +47,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.rootURL = '/efitness';
   }
 
   return ENV;

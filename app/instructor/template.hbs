@@ -1,13 +1,27 @@
-{{log model}}
-<h1>Welcome {{model.instructor.name}}!</h1>
+<h1 class="instructor__title">Welcome {{model.instructor.name}}!</h1>
 
-<p>You're an instructor for {{classCount}} classes.</p>
-{{class-list classes=model.classes}}
+<p class="instructor__intro">You're an instructor for {{classCount}} classes.</p>
+{{class-list classes=model.classes onNewLesson=(action 'newLesson')}}
+
+<p class="instructor__intro">You're able to book classes at these locations.</p>
+{{#each model.locations as |location|}}
+  {{pickable-item type="location" item=location onPick=(action 'onPickLocation')}}
+{{/each}}
 
 <div class="instructor__actions">
   {{#round-button onPress=(action 'newClass')}}
     New Class
   {{/round-button}}
+  {{#round-button onPress=(action 'newLocation')}}
+    New Location
+  {{/round-button}}
 </div>
+<div class="instructor__actionplug"></div>
 
 {{modal-new-class isOpen=isNewClassOpen onDone=(action 'onDoneNewClass')}}
+
+{{#if isNewLessonOpen}}
+  {{modal-new-lesson cls=newLessonClass isOpen=isNewLessonOpen onDone=(action 'onDoneNewLesson')}}
+{{/if}}
+
+{{modal-new-location isOpen=isNewLocationOpen onDone=(action 'onDoneNewLocation')}}

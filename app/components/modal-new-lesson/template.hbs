@@ -1,0 +1,74 @@
+{{#modal-dialog title=dialogTitle isOpen=isOpen}}
+  {{#if confirming}}
+    <h4>Please Confirm These Details</h4>
+    {{#modal-row label="Lesson Name"}}
+      {{newLesson.shortdesc}}
+    {{/modal-row}}
+    {{#modal-row label="Description"}}
+      {{newLesson.longdesc}}
+    {{/modal-row}}
+    
+    {{#modal-row label="Location"}}
+      {{pickedLocation.name}}
+    {{/modal-row}}
+    {{#modal-row label="Instructor"}}
+      {{pickedInstructor.name}}
+    {{/modal-row}}
+    
+    {{#modal-row label="Image"}}
+      <img class="modal-new-lesson__preview-image" src={{newLesson.image}}>
+    {{/modal-row}}
+
+    {{#modal-row label="Starts At"}}
+      {{dateString}}
+    {{/modal-row}}
+    {{#modal-row label="Length"}}
+      {{lengthMinutes}}min
+    {{/modal-row}}
+
+    {{! confirm/back button}}
+    <div class="modal-new-class__row">
+      {{#round-button class="spreadbutton" onPress=(action 'onCancelConfirm')}}
+        Back
+      {{/round-button}}
+      {{#round-button class="spreadbutton" onPress=(action 'onConfirm')}}
+        Confirm/Create
+      {{/round-button}}
+    </div>
+  {{else}} {{! if we're not in confirm-mode ...}}
+    {{#modal-row label="Lesson Name"}}
+        {{input value=newLesson.shortdesc placeholder="HIIT"}} 
+    {{/modal-row}}
+    {{#modal-row label="Description"}}
+        {{input value=newLesson.longdesc placeholder="We'll be doing a series of high intensity intervals, trying to build up your cardio.  HIIT is currently have a bit of a moment"}} 
+    {{/modal-row}}
+    
+    {{#modal-row label="Location"}}
+      {{item-picker initialPick=pickedLocation list=dbService.locations humanType="Location" type="location" onPick=(action 'onPickLocation')}} 
+    {{/modal-row}}
+    {{#modal-row label="Instructor"}}
+      {{item-picker initialPick=pickedInstructor list=dbService.instructors humanType="Instructor" type="instructor" onPick=(action 'onPickInstructor')}}
+    {{/modal-row}}
+    
+    {{#modal-row label="Image"}}
+      {{image-picker onPick=(action 'onPickedImage') initialPick=newLesson.image}}
+    {{/modal-row}}
+
+    {{#modal-row label="Starts At"}}
+      <input type="datetime-local" value={{pickedDateTime}}>
+    {{/modal-row}}
+    {{#modal-row label="Length"}}
+      {{input type="range" min="5" max="120" step="5" value=lengthMinutes}}
+      {{lengthMinutes}}min
+    {{/modal-row}}
+    {{#modal-row label="Price (dollars)"}}
+      {{input value=newLesson.price}}
+    {{/modal-row}}
+
+    <div class="modal-new-class__row">
+      {{#round-button onPress=(action 'onSubmit') class="modal-new-class__submit"}}
+        Submit New Lesson
+      {{/round-button}}
+    </div>
+  {{/if}}
+{{/modal-dialog}}

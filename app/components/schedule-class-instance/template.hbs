@@ -1,20 +1,39 @@
-<div class="schedule-instance__image">
 
+<div class="schedule-instance__top">
+  <div class="schedule-instance__image">
+
+  </div>
+  <div class="schedule-instance__right">
+    <div class="schedule-instance__time">
+      <b>Class</b>: {{instance.class.name}}
+    </div>
+    <div class="schedule-instance__time">
+      <b>Lesson</b>: {{instance.shortdesc}}
+    </div>
+    <div class="schedule-instance__time">
+      <b>Date</b>: {{date instance.starttime}}
+    </div>
+    <div class="schedule-instance__time">
+      <b>Length</b>: {{length instance.lengthseconds}}
+    </div>
+    <div class="schedule-instance__price">
+      <b>Price</b>: {{price instance.price}}
+    </div>
+  </div>
 </div>
-<div class="schedule-instance__right">
-  <div class="schedule-instance__time">
-    <b>Class</b>: {{instance.class.name}}
-  </div>
-  <div class="schedule-instance__time">
-    <b>Lesson</b>: {{instance.shortdesc}}
-  </div>
-  <div class="schedule-instance__time">
-    <b>Date</b>: {{date instance.starttime}}
-  </div>
-  <div class="schedule-instance__time">
-    <b>Length</b>: {{length instance.lengthseconds}}
-  </div>
-  <div class="schedule-instance__price">
-    <b>Price</b>: {{price instance.price}}
-  </div>
+
+<div class="schedule-instance__bottom">
+  {{#if canChangeAttendance}}
+    {{#if isAttending}}
+      {{#round-button onPress=(action 'unattend') class="green" working=isWorking}}
+        Attending
+      {{/round-button}}
+    {{else}}
+      {{#round-button onPress=(action 'attend') working=isWorking}}
+        Attend
+      {{/round-button}}
+    {{/if}}
+  {{else if canChangeRating}}
+    {{rating-control rating=instance.rating onRate=(action 'onRate')}}
+  {{/if}}
 </div>

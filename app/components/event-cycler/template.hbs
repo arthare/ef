@@ -9,6 +9,8 @@
 </div>
 <div class="cycler__text cycler__fading {{if running 'running'}}">
   {{#if currentClass}}
-    {{currentClass.name}} with {{currentClass.instructor.name}} at {{currentClass.location.name}}
+    <p><b>What</b>: {{currentClass.name}} with {{currentClass.instructor.name}}</p>
+    <p><b>Where</b>: {{currentClass.location.name}}</p>
+    <p><b>Next</b>: {{date currentClass.nexttime}}</p>
   {{/if}}
 </div>

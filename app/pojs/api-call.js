@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default function(hitPage, data) {
-  const url = 'http://localhost:3000' + '/' + hitPage;
+  const url = window.efitness.baseUrl + '/' + hitPage;
   
   return new Ember.RSVP.Promise((resolve, reject) => {
     Ember.$.ajax(url, {

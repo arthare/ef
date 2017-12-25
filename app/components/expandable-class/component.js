@@ -6,15 +6,16 @@ export default Ember.Component.extend({
   classNames: ['expandable__container'],
   hasData: false,
   isExpanded: false,
-
+  userService: Ember.inject.service('service-user'),
 
   didInsertElement() {
     Ember.assert2(_.isObject(this.get('class')));
     Ember.assert2(_.isString(this.get('class.name')));
-    console.log("class = ", this.get('class'));
     // let's get our image
     let img = this.$('.expandable__image');
-    img.css('background-image', `url('http://localhost:3000/image/class/${this.get('class.id')}')`);
+    const url = `url('${window.efitness.baseUrl}/image/class/${this.get('class.id')}')`;
+    console.log("Trying to grab an image!", url, img);
+    img.css('background-image', url);
   },
 
   actions: {
@@ -22,7 +23,7 @@ export default Ember.Component.extend({
       this.toggleProperty('isExpanded');
       this.set('hasData', false); // initially, we don't have data
 
-      apiCall('classinstance/' + this.get('class.id'), {}).then((instances) => {
+      apiCall('classinstances/' + this.get('class.id'), {userid: this.get('userService.userId')}).then((instances) => {
         this.set('instances', instances);
 
         console.log("instances = ", instances);
@@ -31,6 +32,7 @@ export default Ember.Component.extend({
     },
     newLesson() {
       // they want a new lesson
+      this.attrs.onNewLesson(this.get('class'));
     }
   }
 });

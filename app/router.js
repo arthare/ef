@@ -7,8 +7,10 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('instructor', { path: '/instructor/:id' });
+  this.route('instructor');
   this.route('whatsup');
+  this.route('whoareyou');
+  this.route('pastclasses');
 });
 
 export default Router;

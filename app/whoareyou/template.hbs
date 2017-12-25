@@ -1,0 +1,10 @@
+<h1>Who are you?</h1>
+<i><small>(this is a fake login page)</small></i>
+<h3>Normal Users</h3>
+{{#each model.users as |user|}}
+  <div class="whoareyou__username" {{action 'selectUser' user}}>{{user.name}}</div>
+{{/each}}
+<h3>Instructors</h3>
+{{#each model.instructors as |instructor|}}
+  <div class="whoareyou__username" {{action 'selectInstructor' instructor}}>{{instructor.name}}</div>
+{{/each}}
