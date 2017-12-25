@@ -7,16 +7,10 @@ var dataUriToBuffer = require('data-uri-to-buffer');
 
 var connection = mysql.createConnection({
   host: 'localhost',
-  user: 'staczero_web',
-  password: 'NNm3Bfv9jIX5FFXfZI6o',
-  database: 'efitness',
-});
-/*var connection = mysql.createConnection({
-  host: 'localhost',
   user: 'root',
   password: '',
   database: 'efitness',
-});*/
+});
 connection.connect();
 
 var app = express();

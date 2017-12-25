@@ -44,7 +44,8 @@
     "ember-welcome-page": "^1.0.3",
     "eonasdan-bootstrap-datetimepicker": "4.17.47",
     "loader.js": "^4.0.10",
-    "mysql": "github:mysqljs/mysql"
+    "mysql": "github:mysqljs/mysql",
+    "webdriverio": "^4.9.11"
   },
   "engines": {
     "node": ">= 0.12.0"
